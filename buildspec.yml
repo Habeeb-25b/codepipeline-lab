@@ -1,7 +1,17 @@
 version: 0.2
 
 phases:
+  install:
+    commands:
+      - git clone https://github.com/awslabs/git-secrets.git
+      - cd git-secrets
+      - sudo make install
+      - cd ..
+
   build:
     commands:
-      - echo "Hello from CodeBuild"
+      - git secrets --install
+      - git secrets --scan || exit 1
+
+
 
