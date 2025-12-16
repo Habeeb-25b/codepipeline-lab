@@ -11,7 +11,9 @@ phases:
   build:
     commands:
       - git secrets --install
+      - git secrets --register-aws
       - git secrets --scan || exit 1
+
 
 
 
